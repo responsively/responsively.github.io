@@ -1,0 +1,36 @@
+
+body {
+  background: #aaccff;
+	font-family: 'Averia Libre', cursive;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #0000ff;
+}
+
+a:visited {
+}
+
+.main {
+  background: #fff;
+  //border: 1px solid #5599ee;
+  border-radius: 8px;
+  margin: 28px 20px;
+  padding: 0 20px 20px;
+}
+
+.title {
+  color: #0000ff;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.subtitle {
+  margin: 20px 0 4px;
+  color: #0000aa;
+  font-size: 28px;
+}
+
