@@ -26,7 +26,7 @@
      responsively.js commonly can be helpful in two situations:
      <ol>
       <li>
-       <b>When content needs to be displayed differently based on the <i>content itself</i> rather than <i>device dimensions</i>.</b>
+       <b>When content needs to be displayed differently based on the <i>content dimensions</i> rather than <i>device dimensions</i>.</b>
        <br>
        For example, content adjacent to abnormally large content might need to be displayed differently so that both pieces of content can still fit next to each other.
       </li>
@@ -106,7 +106,8 @@
       <li>
        <span class="js">constrain<sub>string (selector), <i>either <span class="js">constrain</span> or <span class="js">height</span> must be specified</i></sub></span>
        <br>
-       Normally responsively.js attempts to constrain to the width of the parent element.  If <span class="js">constrain</span> is specified, it will constrain to the width of a subelement.
+       Normally responsively.js attempts to constrain to the width of the parent element.  If <span class="js">constrain</span> is specified, it will constrain to the width of a subelement
+       matched by the <span class="js">constrain</span> selector.
       </li>
       <li>
        <span class="js">height<sub>integer (pixels), <i>either <span class="js">constrain</span> or <span class="js">height</span> must be specified</i></sub></span>
@@ -133,7 +134,7 @@
         <li>
          <span class="js">when<sub>boolean, <i>optional</i></span>
          <br>
-         If this option is present and evalutes to false, this rule will be skipped.
+         If this option is present and evalutes to false, this rule will be skipped.  Typically <span class="js">when</span> will be a function that returns a boolean.
         </li>
         <li>
          <span class="js">level<sub>integer (level), <i>optional</i></span>
@@ -171,10 +172,22 @@
     <p>
      <i>Note:</i>  All options can also be functions.  If a function is found, it will be invoked and the return value of the function will be used as the final value.
     </p>
-    <p>
-     <h3>how it works</h3>
+    <h3>how it works</h3>
 
-     TODO
+    <p>
+     responsively.js first renders the parent <span class="js">outer</span> and <span class="js">inner</span> properties (if present).  It then executes all level 0 rules in the
+     <span class="js">rules</span> array.
+    </p>
+    <p>
+     If the content does not fit, it will then keep moving up levels and applying rules at that level until the content fits.
+    </p>
+    <p>
+     Rules should be written to gradually remove and rewrite content so that the content will ultimately fit as size becomes more constrained (either due to smaller devices
+     or larger content elements).
+    </p>
+    <p>
+     This rendering is done effectively "desktop-first" because this ensures that the algorithm never needs to backtrack.  The rendering are all done off-screen to increase performance and
+     reduce screen flicker.  Possibly in the future render decisions can be cached to speed rendering further.
     </p>
     <p>
      <h3>dependencies</h3>
