@@ -19,8 +19,8 @@
     </p>
     <p>
      It is designed to work well with sites that use client-side templates (handlebars.js, mustache, ...).  It is <i>not</i> intended to replace
-     more traditional responsive design techniques (media queries, grids, ...), but rather it should be used as a tool to solve specific responsive
-     design problems that are not easily handled using traditional techniques or to augment them. responsively.js is not a framework.
+     more traditional responsive design techniques (media queries, grids, ...) -- it should be used as a tool to solve specific responsive
+     design problems that are not easily handled using traditional techniques alone.
     </p>
     <p>
      responsively.js commonly can be helpful in two situations:
@@ -179,14 +179,14 @@
      <span class="js">rules</span> array.
     </p>
     <p>
-     If the content does not fit, it will then keep moving up levels and applying rules at that level until the content fits.
+     If the content does not fit, it will then keep moving up levels and applying rules at that level until the content fits or it runs out of levels.
     </p>
     <p>
-     Rules should be written to gradually remove and rewrite content so that the content will ultimately fit as size becomes more constrained (either due to smaller devices
+     Rules should be written to gradually remove and/or rewrite content so that the content will fit as size becomes more constrained (either due to smaller devices
      or larger content elements).
     </p>
     <p>
-     This rendering is done effectively "desktop-first" because this ensures that the algorithm never needs to backtrack.  The rendering are all done off-screen to increase performance and
+     This rendering is done effectively "desktop-first" because this ensures that the algorithm never needs to backtrack.  The rendering is done off-screen to increase performance and
      reduce screen flicker.  Possibly in the future render decisions can be cached to speed rendering further.
     </p>
     <p>
