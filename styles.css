@@ -59,5 +59,14 @@ a:visited {
 
 .cmd {
 	font-family: Courier New;
+	background: #cceeff;
+	display: block;
+	padding: 4px;
+	margin-top: 4px;
+	border: 1px solid #aaccff;
+}
+
+.url {
+	font-family: Courier New;
 }
 
