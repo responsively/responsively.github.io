@@ -100,12 +100,19 @@
      <ul>
       <li>
        <span class="js">parent<sub>string (selector) or jQuery object</sub></span>
+       <br>
+       This is the root element that is to be rendered.
       </li>
       <li>
-       <span class="js">constrain<sub>string (selector), <i>optional</i></sub></span>
+       <span class="js">constrain<sub>string (selector), <i>either <span class="js">constrain</span> or <span class="js">height</span> must be specified</i></sub></span>
+       <br>
+       Normally responsively.js attempts to constrain to the width of the parent element.  If <span class="js">constrain</span> is specified, it will constrain to the width of a subelement.
       </li>
       <li>
-       <span class="js">height<sub>integer (pixels), <i>optional</i></span>
+       <span class="js">height<sub>integer (pixels), <i>either <span class="js">constrain</span> or <span class="js">height</span> must be specified</i></sub></span>
+       <br>
+       Responsively will keep applying levels until the height of the <span class="js">parent</span> (or <span class="js">constrain</span> element, if specified) is less than or equal to the
+       specified height.
       </li>
       <li>
        <span class="js">inner<sub>string (html), <i>optional</i></sub></span>
