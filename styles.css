@@ -3,27 +3,13 @@ body {
 	font-family: 'Averia Libre', cursive;
   font-size: 18px;
 
-  //background: #aaccff;
-  //background-image: linear-gradient(transparent 50%, rgba(255,255,255,.5) 50%);
-  //background-size: 15px 15px;
-
-	/*
-  background:
-    linear-gradient(27deg, #aaccff 5px, transparent 5px) 0 5px,
-    linear-gradient(207deg, #aaccff 5px, transparent 5px) 10px 0px,
-    linear-gradient(27deg, #88bbff 5px, transparent 5px) 0px 10px,
-    linear-gradient(207deg, #88bbff 5px, transparent 5px) 10px 5px,
-    linear-gradient(90deg, #66aaff 10px, transparent 10px),
-    linear-gradient(#88bbff 25%, #5599ff 25%, #5599ff 50%, transparent 50%, transparent 75%, #5599ff 75%, #5599ff);
-  background-color: #aaccff;
-  background-size: 20px 20px;
-	*/
-
+	/* adapted from http://lea.verou.me/css3patterns/#blueprint-grid */
   background-color:#aaccff;
-  background-image: linear-gradient(white 1px, transparent 1px),
-  linear-gradient(90deg, white 1px, transparent 1px),
-  linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
-  linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
+  background-image:
+	  linear-gradient(white 1px, transparent 1px),
+    linear-gradient(90deg, white 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
   background-size:100px 100px, 100px 100px, 20px 20px, 20px 20px;
   background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px
 }
@@ -39,34 +25,63 @@ a:visited {
 
 .main {
   background: #fff;
-  //border: 1px solid #5599ee;
   border-radius: 8px;
   margin: 28px 20px;
   padding: 10px 20px 20px;
 }
 
-.title {
+h1, h2, h3 {
+	margin: 0;
+}
+
+h1 {
   color: #0000ff;
   font-size: 50px;
   font-weight: bold;
 }
 
-.subtitle {
-  margin: 20px 0 4px;
+h2 {
+	border-top: 1px solid #aaccff;
+  margin: 40px 0 4px;
   color: #0000aa;
   font-size: 28px;
 }
 
-.cmd {
+h3 {
+  margin: 20px 0 4px;
+  color: #0000aa;
+  font-size: 22px;
+}
+
+li {
+	margin-top: 12px;
+}
+
+li > span:first-child {
+	display: inline-block;
+	margin-bottom: 6px;
+}
+
+div:first-child h2 {
+	margin-top: 4px;
+}
+
+.cmd, .js, .url {
 	font-family: Courier New;
-	background: #cceeff;
+}
+
+.cmd {
+	background: #ddeeff;
 	display: block;
 	padding: 4px;
 	margin-top: 4px;
 	border: 1px solid #aaccff;
+	border-radius: 4px;
 }
 
-.url {
-	font-family: Courier New;
+.js > sub {
+	font-family: 'Averia Libre', cursive;
+	display: inline-block;
+	margin-left: 4px;
 }
 

@@ -7,13 +7,13 @@
  <body>
 
   <div class="main">
-   <div class="title">responsively.js</div>
+   <h1>responsively.js</h1>
   </div>
 
   <div class="main">
 
    <div>
-    <div class="subtitle">what</div>
+    <h2>what</h2>
     <p>
      <b>responsively.js</b> is a small, open-source JavaScript micro-library designed to help solve responsive design problems.
     </p>
@@ -22,10 +22,25 @@
      more traditional responsive design techniques (media queries, grids, ...), but rather it should be used as a tool to solve specific responsive
      design problems that are not easily handled using traditional techniques or to augment them. responsively.js is not a framework.
     </p>
+    <p>
+     responsively.js commonly can be helpful in two situations:
+     <ol>
+      <li>
+       <b>When content needs to be displayed differently based on the <i>content itself</i> rather than <i>device dimensions</i>.</b>
+       <br>
+       For example, content adjacent to abnormally large content might need to be displayed differently so that both pieces of content can still fit next to each other.
+      </li>
+      <li>
+       <b>Continuous device sizes.</b>
+       <br>
+       Unlike media queries, which typically have specific resolution breakpoints, responsively.js will apply rules progressively when the content does not fit.
+      </li>
+     </ol>
+    </p>
    </div>
 
    <div>
-    <div class="subtitle">download</div>
+    <h2>download</h2>
 
     <p>
      From <b>Git</b>:
@@ -40,7 +55,7 @@
    </div>
 
    <div>
-    <div class="subtitle">source</div>
+    <h2>source</h2>
 
     responsively.js is maintained on Github at:
 
@@ -50,27 +65,165 @@
    </div>
 
    <div>
-    <div class="subtitle">api</div>
+    <h2>usage</h2>
 
-    TODO:  api
+    <h3>modules</h3>
+    <p>
+     responsively.js supports AMD-style modules.  If not used as an AMD module, it will expose a <span class="js">responsively</span> variable on the global window object.
+    </p>
+    <h3><span class="js">responsively</span> object</h3>
+    <p>
+     <span class="js">responsively</span> is a function object which is invoked with a single <i>options</i> parameter.  This returns a responsively.js instance which has the following properties:
+     <ul>
+      <li>
+       <span class="js">render()</span>
+       <br>
+       This renders the <i>responsively</i> object.
+      </li>
+      <li>
+       <span class="js">update()</span>
+       <br>
+       This updates the <i>responsively</i> object in-place.  This is useful when a region of the screen needs to be dynamically updated.
+      </li>
+      <li>
+       <span class="js">level</span>
+       <br>
+       This returns the current level that the responsively object has rendered to.  This can be used to determine if something needs to be rendered in another way because it couldn't
+       fit into this responsively element.  For example, if you remove a "hints" object at level 2, and the responsively object is at level 2, you know that the "hints" object has been removed
+       and might need to be displayed elsewhere on the page.
+      </li>
+     </ul>
+    </p>
+    <h3>options</h3>
+    <p>
+     The <i>options</i> object has the following options:
+     <ul>
+      <li>
+       <span class="js">parent<sub>string (selector) or jQuery object</sub></span>
+      </li>
+      <li>
+       <span class="js">constrain<sub>string (selector), <i>optional</i></sub></span>
+      </li>
+      <li>
+       <span class="js">height<sub>integer (pixels), <i>optional</i></span>
+      </li>
+      <li>
+       <span class="js">inner<sub>string (html), <i>optional</i></sub></span>
+       <br>
+       The parent's inner HTML will be set to this string.  The string is typically the output of a template.
+      </li>
+      <li>
+       <span class="js">outer<sub>string (html), <i>optional</i></sub></span>
+       <br>
+       The parent's outer HTML will be set to this string.  The string is typically the output of a template.  If the string is set to <span class="js">null</span>, then the outer element will
+       be <i>removed</i> from the DOM.
+      </li>
+      <li>
+       <span class="js">rules</span>
+       <br>
+       This is an array which contains a list of rules to progressively apply.  Each rule is its own <i>options</i> object:
+       <ul>
+        <li>
+         <span class="js">when<sub>boolean, <i>optional</i></span>
+         <br>
+         If this option is present and evalutes to false, this rule will be skipped.
+        </li>
+        <li>
+         <span class="js">level<sub>integer (level), <i>optional</i></span>
+        </li>
+        <li>
+         <span class="js">a<sub>string (selector), <i>required by <span class="js">inner</span>, <span class="js">outer</span>, and <span class="js">hide</span></i></sub></span>
+         <br>
+         This sets the anchor for this rule to the specified selector.  This selector will be applied relative to <span class="js">parent</span>.
+        </li>
+        <li>
+         <span class="js">fn<sub>function, <i>optional</i></span>
+         <br>
+         This function is simply evaluated whenever this rule triggers.  The return value is not used.
+        </li>
+        <li>
+         <span class="js">inner<sub>string (html), <i>optional</i></sub></span>
+         <br>
+         The anchor's inner HTML will be set to this string.  The string is typically the output of a template.
+        </li>
+        <li>
+         <span class="js">outer<sub>string (html), <i>optional</i></sub></span>
+         <br>
+          The parent's outer HTML will be set to this string.  The string is typically the output of a template.  If the string is set to <span class="js">null</span>, then the outer element will
+          be <i>removed</i> from the DOM.
+        </li>
+        <li>
+         <span class="js">hide<sub>boolean, <i>optional</i></span>
+         <br>
+         The element <span class="js">a</span> will be hidden (<span class="js">display: none</span>).
+        </li>
+       </ul>
+      </li>
+     </ul>
+    </p>
+    <p>
+     <i>Note:</i>  All options can also be functions.  If a function is found, it will be invoked and the return value of the function will be used as the final value.
+    </p>
+    <p>
+     <h3>how it works</h3>
+
+     TODO
+    </p>
+    <p>
+     <h3>dependencies</h3>
+     responsively.js depends on jQuery 1.9 or later.
+    </p>
    </div>
 
    <div>
-    <div class="subtitle">examples</div>
+    <h2>example</h2>
 
-    TODO:  examples
+    <pre>
+  responsively({
+    parent: '.banner',
+    inner: template( 'bannerTemplate' ),
+    rules: [
+      {
+        <i>// this will be called on the initial render, since it has no level, it is level 0.  Level 0 is always called.</i>
+        fn: function() {
+          view.initControls();
+        }
+      },
+      {
+        // remove hints if we are out of room
+        level: 1,
+        a: '.hints',
+        hide: true
+      },
+      {
+        level: 1, <i>// this will be applied at the same time the preceding rule is, since they have the same level</i>
+        fn: function() {
+          ...
+        }
+      },
+      {
+        level: 2,
+        a: '.saveBtn',
+        inner: function() { return template( 'labellessSaveBtn' ); }
+      }
+    ]
+  }).render();
+
+    </pre>
    </div>
 
    <div>
-    <div class="subtitle">license</div>
+    <h2>license</h2>
 
     responsively.js is licensed under the <a href="license.html">MIT License</a>.
    </div>
 
    <div>
-    <div class="subtitle">contribute</div>
+    <h2>contribute</h2>
 
-    Feedback and pull requests are welcome!
+    <p>Feedback and pull requests are welcome!</p>
+
+    <p><a href="https://github.com/responsively/responsivelyjs/issues">Submit Feedback or Bugs</a></p>
    </div>
 
   </div>
