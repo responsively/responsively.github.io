@@ -79,9 +79,14 @@ div:first-child h2 {
 	border-radius: 4px;
 }
 
+li > .js:first-child {
+	color: #0000ff;
+}
+
 .js > sub {
 	font-family: 'Averia Libre', cursive;
 	display: inline-block;
 	margin-left: 4px;
+	color: #000088;
 }
 

@@ -71,30 +71,30 @@
     <p>
      responsively.js supports AMD-style modules.  If not used as an AMD module, it will expose a <span class="js">responsively</span> variable on the global window object.
     </p>
-    <h3><span class="js">responsively</span> object</h3>
+    <h3><span class="js">responsively</span> and <span class="js">renderer</span> objects</h3>
     <p>
-     <span class="js">responsively</span> is a function object which is invoked with a single <i>options</i> parameter.  This returns a responsively.js instance which has the following properties:
+     <span class="js">responsively</span> is a singleton function object which is invoked with a single <i>options</i> parameter.  This returns a <span class="js">renderer</span> instance which has the following properties:
      <ul>
       <li>
        <span class="js">render()</span>
        <br>
-       This renders the <i>responsively</i> object.
+       This causes the <span class="js">renderer</span> to execute and process its rules.
       </li>
       <li>
        <span class="js">update()</span>
        <br>
-       This updates the <i>responsively</i> object in-place.  This is useful when a region of the screen needs to be dynamically updated.
+       This updates the DOM that <span class="js">renderer</span> is managing in-place.  This is useful when a region of the screen needs to be dynamically updated.
       </li>
       <li>
        <span class="js">level</span>
        <br>
-       This returns the current level that the responsively object has rendered to.  This can be used to determine if something needs to be rendered in another way because it couldn't
-       fit into this responsively element.  For example, if you remove a "hints" object at level 2, and the responsively object is at level 2, you know that the "hints" object has been removed
-       and might need to be displayed elsewhere on the page.
+       This returns the current level that the <span class="js">renderer</span> has rendered to.  This can be used to determine if something needs to be rendered in another way because it couldn't
+       fit into this <span class="js">renderer</span>'s parent element.  For example, if you remove a "hints" object at level 2, and the <span class="renderer">renderer</span> is at level 2, you know that
+       the "hints" object has been removed and might need to be displayed elsewhere on the page.
       </li>
      </ul>
     </p>
-    <h3>options</h3>
+    <h3><span class="js">responsively</span> options</h3>
     <p>
      The <i>options</i> object has the following options:
      <ul>
@@ -104,16 +104,16 @@
        This is the root element that is to be rendered.
       </li>
       <li>
-       <span class="js">constrain<sub>string (selector), <i>either <span class="js">constrain</span> or <span class="js">height</span> must be specified</i></sub></span>
+       <span class="js">constrain<sub>string (selector), <i>optional</i></sub></span>
        <br>
-       Normally responsively.js attempts to constrain to the width of the parent element.  If <span class="js">constrain</span> is specified, it will constrain to the width of a subelement
-       matched by the <span class="js">constrain</span> selector.
+       Normally responsively.js attempts to constrain to the height and width of the parent element.  If <span class="js">constrain</span> is specified, it will constrain to the height and width of a
+       element matched by the <span class="js">constrain</span> selector.  This selector is relative to <span class="js">parent</span>.
       </li>
       <li>
-       <span class="js">height<sub>integer (pixels), <i>either <span class="js">constrain</span> or <span class="js">height</span> must be specified</i></sub></span>
+       <span class="js">height<sub>integer (pixels), <i>optional</i></sub></span>
        <br>
        Responsively will keep applying levels until the height of the <span class="js">parent</span> (or <span class="js">constrain</span> element, if specified) is less than or equal to the
-       specified height.
+       specified height.  This option is useful if the <span class="js">parent</span> / <span class="js">constrain</span> element do not have a fixed height.
       </li>
       <li>
        <span class="js">inner<sub>string (html), <i>optional</i></sub></span>
@@ -124,7 +124,8 @@
        <span class="js">outer<sub>string (html), <i>optional</i></sub></span>
        <br>
        The parent's outer HTML will be set to this string.  The string is typically the output of a template.  If the string is set to <span class="js">null</span>, then the outer element will
-       be <i>removed</i> from the DOM.
+       be <i>removed</i> from the DOM.  If both <span class="js">inner</span> and <span class="js">outer</span> are both specified, <span class="js">outer</span> is applied first, then
+       <span class="js">inner</span>.
       </li>
       <li>
        <span class="js">rules</span>
@@ -142,7 +143,7 @@
         <li>
          <span class="js">a<sub>string (selector), <i>required by <span class="js">inner</span>, <span class="js">outer</span>, and <span class="js">hide</span></i></sub></span>
          <br>
-         This sets the anchor for this rule to the specified selector.  This selector will be applied relative to <span class="js">parent</span>.
+         This sets the anchor for this rule to the specified selector.  This selector is relative to <span class="js">parent</span>.
         </li>
         <li>
          <span class="js">fn<sub>function, <i>optional</i></span>
@@ -158,7 +159,8 @@
          <span class="js">outer<sub>string (html), <i>optional</i></sub></span>
          <br>
           The parent's outer HTML will be set to this string.  The string is typically the output of a template.  If the string is set to <span class="js">null</span>, then the outer element will
-          be <i>removed</i> from the DOM.
+          be <i>removed</i> from the DOM.  If both <span class="js">inner</span> and <span class="js">outer</span> are both specified, <span class="js">outer</span> is applied first, then
+          <span class="js">inner</span>.
         </li>
         <li>
          <span class="js">hide<sub>boolean, <i>optional</i></span>
@@ -190,6 +192,8 @@
      reduce screen flicker.  Possibly in the future render decisions can be cached to speed rendering further.
     </p>
     <p>
+     Multiple <span class="js">renderer</span>s can be used on the same page to manage different elements.
+    <p>
      <h3>dependencies</h3>
      responsively.js depends on jQuery 1.9 or later.
     </p>
@@ -200,31 +204,31 @@
 
     <pre>
   responsively({
-    parent: '.banner',
-    inner: template( 'bannerTemplate' ),
-    rules: [
+    <b>parent</b>: '.banner',
+    <b>inner</b>: template( 'bannerTemplate' ),
+    <b>rules</b>: [
       {
         <i>// this will be called on the initial render, since it has no level, it is level 0.  Level 0 is always called.</i>
-        fn: function() {
+        <b>fn</b>: function() {
           view.initControls();
         }
       },
       {
         // remove hints if we are out of room
-        level: 1,
-        a: '.hints',
-        hide: true
+        <b>level</b>: 1,
+        <b>a</b>: '.hints',
+        <b>hide</b>: true
       },
       {
-        level: 1, <i>// this will be applied at the same time the preceding rule is, since they have the same level</i>
-        fn: function() {
+        <b>level</b>: 1, <i>// this will be applied at the same time the preceding rule is, since they have the same level</i>
+        <b>fn</b>: function() {
           ...
         }
       },
       {
-        level: 2,
-        a: '.saveBtn',
-        inner: function() { return template( 'labellessSaveBtn' ); }
+        <b>level</b>: 2,
+        <b>a</b>: '.saveBtn',
+        <b>inner</b>: function() { return template( 'labellessSaveBtn' ); }
       }
     ]
   }).render();
