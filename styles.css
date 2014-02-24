@@ -1,7 +1,7 @@
 
 body {
-	font-family: 'Averia Libre', cursive;
-  font-size: 18px;
+	font-family: 'Buenard', Helvetica, Arial, serif;
+	font-size: 20px;
 
 	/* adapted from http://lea.verou.me/css3patterns/#blueprint-grid */
   background-color:#aaccff;
@@ -20,6 +20,10 @@ a {
   color: #0000ff;
 }
 
+i {
+	font-family: 'Gentium Basic', Helvetica, Arial, serif !important;
+}
+
 a:visited {
 }
 
@@ -32,6 +36,8 @@ a:visited {
 
 h1, h2, h3 {
 	margin: 0;
+	font-family: 'Averia Libre', cursive;
+  font-size: 18px;
 }
 
 h1 {
@@ -67,7 +73,7 @@ div:first-child h2 {
 }
 
 .cmd, .js, .url {
-	font-family: Courier New;
+	font-family: Inconsolata, Courier New, Courier;
 }
 
 .cmd {
@@ -84,7 +90,7 @@ li > .js:first-child {
 }
 
 .js > sub {
-	font-family: 'Averia Libre', cursive;
+	font-family: Buenard, cursive;
 	display: inline-block;
 	margin-left: 4px;
 	color: #000088;

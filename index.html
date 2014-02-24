@@ -1,7 +1,7 @@
 <html>
  <head>
   <title>responsively.js</title>
-  <link href="http://fonts.googleapis.com/css?family=Averia+Libre:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Averia+Libre:400,300,300italic,400italic,700,700italic|Gentium+Basic:400italic,700italic|Buenard:400,700&amp|Inconsolata;subset=latin,latin-ext" type="text/css">
   <link rel="stylesheet" href="styles.css">
  </head>
  <body>
@@ -128,7 +128,7 @@
        <span class="js">inner</span>.
       </li>
       <li>
-       <span class="js">rules</span>
+       <span class="js">rules<sub>array (rule options)</sub></span>
        <br>
        This is an array which contains a list of rules to progressively apply.  Each rule is its own <i>options</i> object:
        <ul>
@@ -214,7 +214,7 @@
         }
       },
       {
-        // remove hints if we are out of room
+        <i>// remove hints if we are out of room</i>
         <b>level</b>: 1,
         <b>a</b>: '.hints',
         <b>hide</b>: true
