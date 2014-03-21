@@ -141,7 +141,9 @@
          <span class="js">overflow<sub>object (overflow options)</sub></span>
          <br>
          This is an object which defines an overflow menu.  responsively.js will <i>progressively</i> slide menu options into the overflow dropdown menu if there is not enough room to
-         display all of the top-level menu options at one time.
+         display all of the top-level menu options at one time.  This is similar to how if you resize a default Twitter Bootstrap site down to a small size, it will move all of the
+         top-level menu items into an overflow dropdown at once.  responsively.js will instead <i>gradually</i> migrate menu items into the dropdown -- so you are not limited to "all or nothing".
+         responsively.js also allows top-level menus to degrade to showing only icons instead of icons + labels as well.
          <ul>
           <li>
            <span class="js">limit<sub>int</sub></span>
