@@ -89,8 +89,8 @@
        <span class="js">level</span>
        <br>
        This returns the current level that the <span class="js">renderer</span> has rendered to.  This can be used to determine if something needs to be rendered in another way because it couldn't
-       fit into this <span class="js">renderer</span>'s parent element.  For example, if you remove a "hints" object at level 2, and the <span class="renderer">renderer</span> is at level 2, you know that
-       the "hints" object has been removed and might need to be displayed elsewhere on the page.
+       fit into this <span class="js">renderer</span>'s parent element.  For example, if you remove a "hints" element at level 2, and the <span class="renderer">renderer</span> is at level 2, you know that
+       the "hints" element has been removed and might need to be displayed elsewhere on the page.
       </li>
      </ul>
     </p>
@@ -225,7 +225,7 @@
          <span class="js">level<sub>integer (level), <i>optional</i></span>
         </li>
         <li>
-         <span class="js">a<sub>string (selector), <i>required by <span class="js">inner</span>, <span class="js">outer</span>, and <span class="js">hide</span></i></sub></span>
+         <span class="js">a<sub>string (selector), <i>required by <span class="js">inner</span>, <span class="js">outer</span>, <span class="js">css</span>, <span class="js">addClass</span>, <span class="js">removeClass</span>, and <span class="js">hide</span></i></sub></span>
          <br>
          This sets the anchor for this rule to the specified selector.  This selector is relative to <span class="js">parent</span>.
         </li>
@@ -242,9 +242,24 @@
         <li>
          <span class="js">outer<sub>string (html), <i>optional</i></sub></span>
          <br>
-          The parent's outer HTML will be set to this string.  The string is typically the output of a template.  If the string is set to <span class="js">null</span>, then the outer element will
+          The anchor's outer HTML will be set to this string.  The string is typically the output of a template.  If the string is set to <span class="js">null</span>, then the outer element will
           be <i>removed</i> from the DOM.  If both <span class="js">inner</span> and <span class="js">outer</span> are both specified, <span class="js">outer</span> is applied first, then
           <span class="js">inner</span>.
+        </li>
+        <li>
+         <span class="js">css<sub>object (css properties), <i>optional</i></sub></span>
+         <br>
+          The given CSS properties will be applied to the anchor.  The css properties should be a JSON object containing <i>css property name</i>: <i>css property value</i> bindings.
+        </li>
+        <li>
+         <span class="js">addClass<sub>string (css class name), <i>optional</i></sub></span>
+         <br>
+          The given CSS class properties will be added to the anchor.
+        </li>
+        <li>
+         <span class="js">removeClass<sub>string (css class name), <i>optional</i></sub></span>
+         <br>
+          The given CSS class properties will be removed from the anchor.
         </li>
         <li>
          <span class="js">hide<sub>boolean, <i>optional</i></span>
@@ -348,6 +363,13 @@
         <b>a</b>: '.saveBtn',
         <b>inner</b>: function() { return template( 'labellessSaveBtn' ); },
         <b>menuIcons</b>: true
+      },
+      {
+        <b>level</b>: 3,
+        <b>a</b>: '.saveBtn',
+        <b>css</b>: {
+          'font-size': '12px'
+        }
       }
     ]
   }).render();
