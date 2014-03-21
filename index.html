@@ -128,6 +128,90 @@
        <span class="js">inner</span>.
       </li>
       <li>
+       <span class="js">menu<sub>object (menu options)</sub></span>
+       <br>
+       This is an object which defines a top-level menu.  The menu is drawn using <a href="http://getbootstrap.com/components/#dropdowns">Twitter Bootstrap dropdown</a> conventions:
+       <ul>
+        <li>
+         <span class="js">a<sub>string (selector), <i>required</i></sub></span>
+         <br>
+         The menu will be rendered inside the element that this selector refers to.  This selector is relative to <span class="js">parent</span>.
+        </li>
+        <li>
+         <span class="js">overflow<sub>object (overflow options)</sub></span>
+         <br>
+         This is an object which defines an overflow menu.  responsively.js will <i>progressively</i> slide menu options into the overflow dropdown menu if there is not enough room to
+         display all of the top-level menu options at one time.
+         <ul>
+          <li>
+           <span class="js">limit<sub>int</sub></span>
+           <br>
+           This specifies the maximum number of options which should be displayed on the top-level menu before moving options to the overflow menu.
+          </li>
+          <li>
+           All standard <a href="#menuOptions">menu item</a> options are also available.  These define the appearance of the top-level overflow menu item itself.
+          </li>
+         </ul>
+        </li>
+        <li>
+         <span class="js">items<sub>array (<span class="js">'-'</span>, <span class="js">'|'</span>, and <i>menu item options</i>)</sub></span>
+         <br>
+         This is an array which contains a list of top-level menu items to display.  A <span class="js">'-'</span> means to insert a menu separator while a
+         <span class="js">'|'</span> specifies that any following options should be forced into the overflow dropdown menu. An object means that it is
+         a menu item <i>options</i> object:
+         <ul>
+          <li>
+           <span class="js">hide<sub>boolean, <i>optional</i></span>
+           <br>
+           The menu item will not be rendered if this is set.
+          </li>
+          <li>
+           <span class="js">element<sub>html tag name, <i>optional</i></span>
+           <br>
+           Each menu item will be wrapped in the element specified.  It defaults to <span class="js">'li'</span>.  If you would like no wrapping element to be created,
+           specify <span class="js">null</span> or an empty string.
+          </li>
+          <li>
+           <span class="js">label<sub>string, <i>optional</i></span>
+           <br>
+           The label for the menu item.  A menu item should have either a label, icon, or label and icon defined.
+          </li>
+          <li>
+           <span class="js">icon<sub>string, <i>optional</i></span>
+           <br>
+           If specified, this should be a set of classes for an icon to be added to the menu item.  For example, <span class="js">'glyphicon glyphicon-search'</span> 
+           (Glyphicons search icon) or <span class="js">'fa fa-calendar'</span> (Font Awesome calendar icon).
+          </li>
+          <li>
+           <span class="js">href<sub>url, <i>optional</i></span>
+           <br>
+           This specifies the <span class="js">href</span> for the menu item link.
+          </li>
+          <li>
+           <span class="js">target<sub>url, <i>optional</i></span>
+           <br>
+           This specifies the <span class="js">target</span> for the menu item link.  Menu items default to no target.
+          </li>
+          <li>
+           <span class="js">classes<sub>string, <i>optional</i></span>
+           <br>
+           This specifies any extra classes to be added to the menu item's <span class="js">class</span> attribute.
+          </li>
+          <li>
+           <span class="js">style<sub>string, <i>optional</i></span>
+           <br>
+           This specifies the <span class="js">style</span> attribute for the menu item.
+          </li>
+          <li>
+           <span class="js">extra<sub>string, <i>optional</i></span>
+           <br>
+           This allows you to add arbitrary HTML to the menu item opening tag.  For example, to add "data-" or "ng-" attributes.
+          </li>
+         </ul>
+        </li>
+       </ul>
+      </li>
+      <li>
        <span class="js">rules<sub>array (rule options)</sub></span>
        <br>
        This is an array which contains a list of rules to progressively apply.  Each rule is its own <i>options</i> object:
@@ -166,6 +250,16 @@
          <span class="js">hide<sub>boolean, <i>optional</i></span>
          <br>
          The element <span class="js">a</span> will be hidden (<span class="js">display: none</span>).
+        </li>
+        <li>
+         <span class="js">menuLimit<sub>int, <i>optional</i></span>
+         <br>
+         This changes the maximum number of menu items which will be shown on the top-level menu before overflowing to the overflow dropdown.
+        </li>
+        <li>
+         <span class="js">menuIcons<sub>boolean, <i>optional</i></span>
+         <br>
+         If set, this forces menu items to drop the labels and only show menu icons.
         </li>
        </ul>
       </li>
@@ -206,6 +300,30 @@
   responsively({
     <b>parent</b>: '.banner',
     <b>inner</b>: template( 'bannerTemplate' ),
+    <b>menu</b>: {
+      <b>a</b>: '#menuPlaceholder', <i>// menuPlaceholder should exist inside the output of template( 'bannerTemplate' ) in this example</i>
+      <b>overflow</b>: {
+        <b>label</b>: 'More',
+        <b>icon</b>:  'fa fa-wrench'
+      },
+      <b>items</b>: [
+        {
+          <b>label</b>: 'Users',
+          <b>href</b>:  '#users',
+          <b>icon</b>:  'fa fa-user'
+        },
+        {
+          <b>label</b>: 'Document',
+          <b>href</b>:  '#documents',
+          <b>icon</b>:  'fa fa-file'
+        },
+        {
+          <b>label</b>: 'Help',
+          <b>href</b>:  '#help',
+          <b>icon</b>:  'fa fa-help'
+        }
+      ]
+    },
     <b>rules</b>: [
       {
         <i>// this will be called on the initial render, since it has no level, it is level 0.  Level 0 is always called.</i>
@@ -228,7 +346,8 @@
       {
         <b>level</b>: 2,
         <b>a</b>: '.saveBtn',
-        <b>inner</b>: function() { return template( 'labellessSaveBtn' ); }
+        <b>inner</b>: function() { return template( 'labellessSaveBtn' ); },
+        <b>menuIcons</b>: true
       }
     ]
   }).render();
