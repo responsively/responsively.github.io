@@ -15,7 +15,7 @@
    <div>
     <h2>what</h2>
     <p>
-     <b>responsively.js</b> is a small, open-source JavaScript micro-library designed to help solve responsive design problems.
+     <span class="rjs">responsively.js</span> is a small, open-source JavaScript micro-library designed to help solve responsive design problems.
     </p>
     <p>
      It is designed to work well with sites that use client-side templates (handlebars.js, mustache, ...).  It is <i>not</i> intended to replace
@@ -23,7 +23,7 @@
      design problems that are not easily handled using traditional techniques alone.
     </p>
     <p>
-     responsively.js commonly can be helpful in two situations:
+     <span class="rjs">responsively.js</span> commonly can be helpful in two situations:
      <ol>
       <li>
        <b>When content needs to be displayed differently based on the <i>content dimensions</i> rather than <i>device dimensions</i>.</b>
@@ -33,7 +33,7 @@
       <li>
        <b>Continuous device sizes.</b>
        <br>
-       Unlike media queries, which typically have specific resolution breakpoints, responsively.js will apply rules progressively when the content does not fit.
+       Unlike media queries, which typically have specific resolution breakpoints, <span class="rjs">responsively.js</span> will apply rules progressively when the content does not fit.
       </li>
      </ol>
     </p>
@@ -57,7 +57,7 @@
    <div>
     <h2>source</h2>
 
-    responsively.js is maintained on Github at:
+    <span class="rjs">responsively.js</span> is maintained on Github at:
 
     <p>
      <a href="https://github.com/responsively/responsivelyjs" class="url">https://github.com/responsively/responsivelyjs</a>
@@ -69,7 +69,7 @@
 
     <h3>modules</h3>
     <p>
-     responsively.js supports AMD-style modules.  If not used as an AMD module, it will expose a <span class="js">responsively</span> variable on the global window object.
+     <span class="rjs">responsively.js</span> supports AMD-style modules.  If not used as an AMD module, it will expose a <span class="js">responsively</span> variable on the global window object.
     </p>
     <h3><span class="js">responsively</span> and <span class="js">renderer</span> objects</h3>
     <p>
@@ -106,7 +106,7 @@
       <li>
        <span class="js">constrain<sub>string (selector), <i>optional</i></sub></span>
        <br>
-       Normally responsively.js attempts to constrain to the height and width of the parent element.  If <span class="js">constrain</span> is specified, it will constrain to the height and width of a
+       Normally <span class="rjs">responsively.js</span> attempts to constrain to the height and width of the parent element.  If <span class="js">constrain</span> is specified, it will constrain to the height and width of a
        element matched by the <span class="js">constrain</span> selector.  This selector is relative to <span class="js">parent</span>.
       </li>
       <li>
@@ -140,10 +140,10 @@
         <li>
          <span class="js">overflow<sub>object (overflow options)</sub></span>
          <br>
-         This is an object which defines an overflow menu.  responsively.js will <i>progressively</i> slide menu options into the overflow dropdown menu if there is not enough room to
+         This is an object which defines an overflow menu.  <span class="rjs">responsively.js</span> will <i>progressively</i> slide menu options into the overflow dropdown menu if there is not enough room to
          display all of the top-level menu options at one time.  This is similar to how if you resize a default Twitter Bootstrap site down to a small size, it will move all of the
-         top-level menu items into an overflow dropdown at once.  responsively.js will instead <i>gradually</i> migrate menu items into the dropdown -- so you are not limited to "all or nothing".
-         responsively.js also allows top-level menus to degrade to showing only icons instead of icons + labels as well.
+         top-level menu items into an overflow dropdown.  <span class="rjs">responsively.js</span> enhances this behavior by progressively migrating menu items into the dropdown -- no "all or nothing".
+         <span class="rjs">responsively.js</span> also allows top-level menus to degrade to showing only icons instead of icons &amp; labels as well.
          <ul>
           <li>
            <span class="js">limit<sub>int</sub></span>
@@ -288,7 +288,7 @@
     <h3>how it works</h3>
 
     <p>
-     responsively.js first renders the parent <span class="js">outer</span> and <span class="js">inner</span> properties (if present).  It then executes all level 0 rules in the
+     <span class="rjs">responsively.js</span> first renders the parent <span class="js">outer</span> and <span class="js">inner</span> properties (if present).  It then executes all level 0 rules in the
      <span class="js">rules</span> array.
     </p>
     <p>
@@ -304,9 +304,10 @@
     </p>
     <p>
      Multiple <span class="js">renderer</span>s can be used on the same page to manage different elements.
+    </p>
+    <h3>dependencies</h3>
     <p>
-     <h3>dependencies</h3>
-     responsively.js depends on jQuery 1.9 or later.
+     <span class="rjs">responsively.js</span> depends on jQuery 1.9 or later.
     </p>
    </div>
 
@@ -382,7 +383,7 @@
    <div>
     <h2>license</h2>
 
-    responsively.js is licensed under the <a href="license.html">MIT License</a>.
+    <span class="rjs">responsively.js</span> is licensed under the <a href="license.html">MIT License</a>.
    </div>
 
    <div>
