@@ -32,6 +32,10 @@ a:visited {
   padding: 10px 20px 20px;
 }
 
+.header {
+  height: 77px;
+}
+
 h1, h2, h3 {
 	margin: 0;
 	font-family: 'Condiment', cursive;
@@ -42,6 +46,8 @@ h1 {
   color: #0000ff;
   font-size: 50px;
   font-weight: bold;
+  height: 50px;
+  border-bottom: 2px solid #aaccff;
 }
 
 h2 {
